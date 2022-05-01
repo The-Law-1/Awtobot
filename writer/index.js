@@ -2,6 +2,8 @@ const fs = require('fs');
 
 const { DoThing, MakeItRhyme } = require('./datamuse.js');
 
+const { SendMessage } = require('./curation.js');
+
 function CleanText(text)
 {
     // split text into lines
@@ -33,8 +35,10 @@ function ReadBrainThoughts(path="../brain/output.txt")
     return text;
 }
 
-let thoughts = ReadBrainThoughts();
+// let thoughts = ReadBrainThoughts();
 
-let suggestions = CleanText(thoughts);
+// let suggestions = CleanText(thoughts);
 
-MakeItRhyme(suggestions);
+// MakeItRhyme(suggestions);
+
+
