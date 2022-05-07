@@ -47,5 +47,5 @@ for i in range(suggestions):
 # prediction = prediction.split(".")
 
 # write prediction to file
-with open(outputFile, "w") as f:
+with open(outputFile, "w+") as f:
     f.write(prediction)
