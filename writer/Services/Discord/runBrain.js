@@ -1,7 +1,7 @@
 // * we processin'!
 const {spawn} = require('child_process');
 const { CleanText, ReadBrainThoughts } = require('../Processor/brainparser');
-const { MakeItRhyme } = require('../Processor/datamuse');
+const { MakeItRhyme, MakeItRhyme2 } = require('../Processor/datamuse');
 
 // * take the interaction, and a function to send messages
 async function runBrain(interaction, sendMessageFct) {
@@ -15,11 +15,18 @@ async function runBrain(interaction, sendMessageFct) {
     // * beginning of an inspirational quote, could come from the message body
     let prompt = "In times of ";
 
+    console.log("interaction option ", interaction.options.getString("prompt"));
+    // * contains a message ?
+    if (interaction.options.getString("prompt") !== null)
+        prompt = interaction.options.getString("prompt");
+
+    console.log("prompt ", prompt);
+
     // * the start could be any of /QuotesModel
     let modelName = "QuotesModel"; // * could also be "QuotesModel", "MovieModel", "PoemsModel";
     let modelPath = `/${modelName}/Training-20EPOCHS/content/one_step`;
 
-    const brainProcess = spawn('python3', [pathToBrain, prompt, modelPath]);
+    const brainProcess = spawn('python3', [pathToBrain, modelPath, prompt]);
 
     brainProcess.on('close', async (code) => {
 
@@ -32,6 +39,7 @@ async function runBrain(interaction, sendMessageFct) {
 
         // * call make it rhyme
         let rhymedSuggestions = await MakeItRhyme(suggestions);
+        // let rhymedSuggestions = await MakeItRhyme2(suggestions);
         // console.log("Retrieved suggestions ", rhymedSuggestions);
 
         let finalmessage = `<@${interaction.user.id}>`

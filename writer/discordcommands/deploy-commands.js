@@ -5,7 +5,13 @@ const { Routes } = require('discord-api-types/v9');
 
 const commands = [
     new SlashCommandBuilder().setName("marco").setDescription("Replies with pong!"),
-    new SlashCommandBuilder().setName("suggest").setDescription("Comes up with 3 quote suggestions"),
+    new SlashCommandBuilder()
+        .setName("suggest").
+        setDescription("Comes up with 3 quote suggestions")
+        .addStringOption(option =>
+            option.setName('prompt')
+                .setDescription('Prompt for neural network')
+                .setRequired(false))
 
 ].map(command => command.toJSON());
 
