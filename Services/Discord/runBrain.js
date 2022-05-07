@@ -13,7 +13,7 @@ async function runBrain(interaction, sendMessageFct) {
     // * acknowledge the message, "Running brain, will ping you when ready"
     await interaction.reply("Thinking... Will ping you when ready!");
 
-    let pathToBrain = "./brain/main.py";
+    let pathToBrain = "../../brain/main.py";
 
     // * beginning of an inspirational quote, could come from the message body
     let prompt = "In times of ";
@@ -35,8 +35,7 @@ async function runBrain(interaction, sendMessageFct) {
     let resolvedBrainPath = path.resolve(__dirname, pathToBrain);
     console.log("Resolved path ", resolvedBrainPath);
 
-
-    const brainProcess = spawn('python3', [resolvedBrainPath, modelPath, prompt]);
+    const brainProcess = spawn('python', [resolvedBrainPath, modelPath, prompt]);
 
     brainProcess.stdout.on('data', function (data) {
         console.log('stdout: ' + data.toString());
