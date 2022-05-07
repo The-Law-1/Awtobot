@@ -26,6 +26,8 @@ async function runBrain(interaction, sendMessageFct) {
     let modelName = "QuotesModel"; // * could also be "QuotesModel", "MovieModel", "PoemsModel";
     let modelPath = `/${modelName}/Training-20EPOCHS/content/one_step`;
 
+    // ! might need to resolve the path to brain/main.py, python resolves modelpath himself
+
     const brainProcess = spawn('python3', [pathToBrain, modelPath, prompt]);
 
     brainProcess.on('close', async (code) => {
