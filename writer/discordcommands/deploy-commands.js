@@ -18,7 +18,8 @@ const commands = [
         .addStringOption(option =>
             option.setName('tweet-content')
                 .setDescription('Tweet content')
-                .setRequired(true))
+                .setRequired(true)),
+    new SlashCommandBuilder().setName("sleep").setDescription("Pauses reminders")
 
 ].map(command => command.toJSON());
 

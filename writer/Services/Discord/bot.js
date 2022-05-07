@@ -10,6 +10,8 @@ const client = new Client({
 
 var discordBotReady = false;
 
+var currentReminderID = -1;
+
 client.once('ready', () => {
     console.log("Ready !");
     discordBotReady = true;
@@ -36,7 +38,27 @@ client.on("interactionCreate", async interaction => {
     }
 
     if (commandName === "curate") {
-        await handleTweetCommand(interaction)
+        // * clear timeouts !
+        if (currentReminderID !== -1) {
+            clearTimeout(currentReminderID);
+            currentReminderID = -1;
+        }
+
+        await handleTweetCommand(interaction);
+        // * every time you curate, remind you a day from now to tweet again, same time
+        // interaction.reply("Reminding you");
+        // currentReminderID = setTimeout(RemindMe, 1000 * 10);
+        currentReminderID = setTimeout(RemindMe, 1000 * 60 * 60 * 24);
+    }
+
+    if (commandName === "sleep") {
+        interaction.reply("Clearing timeouts");
+
+        // * clear timeouts !
+        if (currentReminderID !== -1) {
+            clearTimeout(currentReminderID);
+            currentReminderID = -1;
+        }
     }
 
         // todo in the future maybe commands like 'take a break for an hour'
@@ -44,6 +66,18 @@ client.on("interactionCreate", async interaction => {
 
     // * send it to the internet
 })
+
+async function RemindMe() {
+    let myID = process.env.DISCORD_USER_ID;
+    let curationChannelID = process.env.DISCORD_CURATION_CHANNEL_ID;
+
+    // * give him some random catchphrases ?
+
+    let message = `<@${myID}> Okay snake let's rattle !`;
+    SendMessage(curationChannelID, message);
+
+    currentReminderID = -1;
+}
 
 // * function to init bot ??
 
