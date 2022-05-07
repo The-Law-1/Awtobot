@@ -37,6 +37,10 @@ async function runBrain(interaction, sendMessageFct) {
 
     const brainProcess = spawn('python', [resolvedBrainPath, modelPath, prompt]);
 
+    brainProcess.on("error", (error) => {
+        console.log("Failed to run brain: ", error);
+    });
+
     brainProcess.stdout.on('data', function (data) {
         console.log('stdout: ' + data.toString());
     });
