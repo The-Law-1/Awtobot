@@ -1,5 +1,6 @@
 // const Discord = require('discord.js');
 const {Client, Intents } = require('discord.js');
+const { handleTweetCommand } = require('../Twitter/twitter');
 require('dotenv').config();
 const { runBrain } = require('./runBrain');
 
@@ -34,7 +35,9 @@ client.on("interactionCreate", async interaction => {
         await runBrain(interaction, SendMessage);
     }
 
-    // todo /post => send content of command
+    if (commandName === "curate") {
+        await handleTweetCommand(interaction)
+    }
 
         // todo in the future maybe commands like 'take a break for an hour'
         // todo or maybe change model, etc...

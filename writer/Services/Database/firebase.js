@@ -18,3 +18,7 @@ async function TestDBConnection()
 }
 
 TestDBConnection();
+
+module.exports = {
+    dbRef
+}

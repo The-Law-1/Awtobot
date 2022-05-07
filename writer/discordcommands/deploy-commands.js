@@ -6,12 +6,19 @@ const { Routes } = require('discord-api-types/v9');
 const commands = [
     new SlashCommandBuilder().setName("marco").setDescription("Replies with pong!"),
     new SlashCommandBuilder()
-        .setName("suggest").
-        setDescription("Comes up with 3 quote suggestions")
+        .setName("suggest")
+        .setDescription("Comes up with 3 quote suggestions")
         .addStringOption(option =>
             option.setName('prompt')
                 .setDescription('Prompt for neural network')
-                .setRequired(false))
+                .setRequired(false)),
+    new SlashCommandBuilder()
+        .setName("curate")
+        .setDescription("Tweet a message")
+        .addStringOption(option =>
+            option.setName('tweet-content')
+                .setDescription('Tweet content')
+                .setRequired(true))
 
 ].map(command => command.toJSON());
 
