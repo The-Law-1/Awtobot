@@ -41,6 +41,10 @@ async function runBrain(interaction, sendMessageFct) {
         console.log("Failed to run brain: ", error);
     });
 
+    brainProcess.stderr.on("data", function (data) {
+        console.log("Stderr ", data);
+    });
+
     brainProcess.stdout.on('data', function (data) {
         console.log('stdout: ' + data.toString());
     });
