@@ -42,7 +42,7 @@ async function runBrain(interaction, sendMessageFct) {
     });
 
     brainProcess.stderr.on("data", function (data) {
-        console.log("Stderr ", data);
+        console.log("Stderr ", data.toString());
     });
 
     brainProcess.stdout.on('data', function (data) {
