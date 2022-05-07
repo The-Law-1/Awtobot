@@ -17,7 +17,7 @@ function CleanText(text)
     return (groups);
 }
 
-function ReadBrainThoughts(path="../brain/output.txt")
+function ReadBrainThoughts(path="./brain/output.txt")
 {
     let text = "";
     // read file with fs

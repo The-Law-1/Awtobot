@@ -10,7 +10,7 @@ async function runBrain(interaction, sendMessageFct) {
     // * acknowledge the message, "Running brain, will ping you when ready"
     await interaction.reply("Thinking... Will ping you when ready!");
 
-    let pathToBrain = "../brain/main.py";
+    let pathToBrain = "./brain/main.py";
 
     // * beginning of an inspirational quote, could come from the message body
     let prompt = "In times of ";
