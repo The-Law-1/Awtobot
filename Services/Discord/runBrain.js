@@ -38,6 +38,10 @@ async function runBrain(interaction, sendMessageFct) {
 
     const brainProcess = spawn('python3', [resolvedBrainPath, modelPath, prompt]);
 
+    brainProcess.stdout.on('data', function (data) {
+        console.log('stdout: ' + data.toString());
+    });
+
     brainProcess.on('close', async (code) => {
         console.log("Exit code: ", code);
 
