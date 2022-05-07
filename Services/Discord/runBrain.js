@@ -1,5 +1,8 @@
 // * we processin'!
 const {spawn} = require('child_process');
+const fs = require('fs');
+const path = require('path');
+
 const { CleanText, ReadBrainThoughts } = require('../Processor/brainparser');
 const { MakeItRhyme, MakeItRhyme2 } = require('../Processor/datamuse');
 
@@ -28,9 +31,15 @@ async function runBrain(interaction, sendMessageFct) {
 
     // ! might need to resolve the path to brain/main.py, python resolves modelpath himself
 
-    const brainProcess = spawn('python3', [pathToBrain, modelPath, prompt]);
+    console.log("Initial path ", pathToBrain);
+    let resolvedBrainPath = path.resolve(__dirname, pathToBrain);
+    console.log("Resolved path ", resolvedBrainPath);
+
+
+    const brainProcess = spawn('python3', [resolvedBrainPath, modelPath, prompt]);
 
     brainProcess.on('close', async (code) => {
+        console.log("Exit code: ", code);
 
         // * read the output.txt
         let thoughts = ReadBrainThoughts();

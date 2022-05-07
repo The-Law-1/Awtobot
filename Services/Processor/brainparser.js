@@ -38,6 +38,10 @@ module.exports = {
     ReadBrainThoughts
 }
 
+
+// let text = fs.readFileSync(path.resolve(__dirname, "../../brain/output.txt"), 'utf8');
+// console.log(text);
+
 // let thoughts = ReadBrainThoughts();
 
 // let suggestions = CleanText(thoughts);
