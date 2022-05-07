@@ -1,1 +1,1 @@
-worker: npm install && npm run start
+worker: pip install -r ./brain/requirements.txt && npm install && npm run start
