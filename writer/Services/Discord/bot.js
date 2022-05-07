@@ -1,6 +1,7 @@
 // const Discord = require('discord.js');
 const {Client, Intents } = require('discord.js');
 require('dotenv').config();
+const { runBrain } = require('./runBrain');
 
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
@@ -29,6 +30,10 @@ client.on("interactionCreate", async interaction => {
         await interaction.reply("polo");
     }
 
+    if (commandName === "suggest") {
+        await runBrain(interaction, SendMessage);
+    }
+
     // todo /post => send content of command
 
         // todo in the future maybe commands like 'take a break for an hour'
@@ -36,6 +41,8 @@ client.on("interactionCreate", async interaction => {
 
     // * send it to the internet
 })
+
+// * function to init bot ??
 
 async function SendMessage(channelID, message) {
 
@@ -46,10 +53,8 @@ async function SendMessage(channelID, message) {
     channel.send(message);
 }
 
-
-
 client.login(process.env.DISCORD_BOT_TOKEN);
 
 module.exports = {
-    SendMessage
+    discordClient: client
 }

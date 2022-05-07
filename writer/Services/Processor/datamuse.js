@@ -1,11 +1,11 @@
 // import axios
 const axios = require('axios');
 
-
-
 // takes an array of suggestions and makes the final word rhyme
 async function MakeItRhyme(suggestions)
 {
+    let rhymedSuggestions = [];
+
     for (let i = 0; i < suggestions.length; i++) {
         const suggestion = suggestions[i];
 
@@ -45,12 +45,17 @@ async function MakeItRhyme(suggestions)
         let final = words.concat(words2);
         // * turn array of strings into single string
         final = final.join(" ");
-        console.log("Final ", final);
+        // console.log("Final ", final);
 
+        rhymedSuggestions.push(final);
     };
+
+    // console.log("Datamuse returning ", rhymedSuggestions);
+
+    return rhymedSuggestions;
 }
 
-async function DoThing()
+/*async function DoThing()
 {
     // get request using axios
     try {
@@ -59,9 +64,8 @@ async function DoThing()
     } catch (error) {
         console.log(error);
     }
-}
+}*/
 
 module.exports = {
-    DoThing,
     MakeItRhyme
 }
