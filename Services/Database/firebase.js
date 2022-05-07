@@ -14,7 +14,7 @@ async function TestDBConnection()
     const dbSnapshot = await dbRef.get();
     const data = dbSnapshot.data();
 
-    console.log(data);
+    // console.log(data);
 }
 
 TestDBConnection();

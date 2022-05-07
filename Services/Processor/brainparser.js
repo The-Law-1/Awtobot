@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 function CleanText(text)
 {
@@ -17,12 +18,13 @@ function CleanText(text)
     return (groups);
 }
 
-function ReadBrainThoughts(path="../../brain/output.txt")
+// * i don't know if this path is relative or what ?
+function ReadBrainThoughts(outputPath="../../brain/output.txt")
 {
     let text = "";
     // read file with fs
     try {
-        text = fs.readFileSync(path, 'utf8');
+        text = fs.readFileSync(path.resolve(__dirname, outputPath), 'utf8');
 
     } catch (error) {
         console.log(error);
@@ -41,5 +43,3 @@ module.exports = {
 // let suggestions = CleanText(thoughts);
 
 // MakeItRhyme(suggestions);
-
-
