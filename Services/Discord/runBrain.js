@@ -59,8 +59,9 @@ async function runBrain(interaction, sendMessageFct) {
 
         console.log("Brain is done", suggestions);
 
-        // * call make it rhyme
-        let rhymedSuggestions = await MakeItRhyme(suggestions);
+        // todo re-do this or make a command that gives you rhymes-with: ...
+        let rhymedSuggestions = suggestions;
+        // let rhymedSuggestions = await MakeItRhyme(suggestions);
         // let rhymedSuggestions = await MakeItRhyme2(suggestions);
         // console.log("Retrieved suggestions ", rhymedSuggestions);
 
