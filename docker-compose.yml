@@ -1,0 +1,19 @@
+
+version: "3.9"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - API_KEY=${API_KEY}
+      - API_SECRET=${API_SECRET}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+      - GOOGLE_CONFIG_BASE64=${GOOGLE_CONFIG_BASE64}
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - DISCORD_USER_ID=${DISCORD_USER_ID}
+      - DISCORD_APP_ID=${DISCORD_APP_ID}
+      - DISCORD_SERVER_ID=${DISCORD_SERVER_ID}
+      - DISCORD_CURATION_CHANNEL_ID=${DISCORD_CURATION_CHANNEL_ID}
