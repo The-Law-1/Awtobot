@@ -15,7 +15,7 @@ function CleanText(text)
         groups.push(lines[i] + lines[i + 1]);
     }
 
-    return (groups);
+    return (lines);
 }
 
 // * i don't know if this path is relative or what ?

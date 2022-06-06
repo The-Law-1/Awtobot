@@ -4,16 +4,23 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 
 const commands = [
-    new SlashCommandBuilder().setName("marco").setDescription("Replies with pong!"),
+    new SlashCommandBuilder().setName("marco").setDescription("Replies with polo!"),
     new SlashCommandBuilder()
-        .setName("suggest")
+        .setName("poetry")
+        .setDescription("Comes up with 3 poem suggestions")
+        .addStringOption(option =>
+            option.setName('prompt')
+                .setDescription('Prompt for neural network')
+                .setRequired(true)),
+        new SlashCommandBuilder()
+        .setName("quotes")
         .setDescription("Comes up with 3 quote suggestions")
         .addStringOption(option =>
             option.setName('prompt')
                 .setDescription('Prompt for neural network')
-                .setRequired(false)),
+                .setRequired(true)),
     new SlashCommandBuilder()
-        .setName("curate")
+        .setName("tweet")
         .setDescription("Tweet a message")
         .addStringOption(option =>
             option.setName('tweet-content')

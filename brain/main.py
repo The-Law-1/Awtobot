@@ -11,7 +11,7 @@ ac = len(av)
 
 pwd = os.path.dirname(os.path.realpath(__file__))
 
-modelPath = pwd + "/QuotesModel/Training-20EPOCHS/content/one_step"
+modelPath = pwd + "/QuotesModel/one_step"
 prompt = "A lonesome hero"
 outputFile = pwd + "/output.txt"
 

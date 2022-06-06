@@ -33,11 +33,15 @@ client.on("interactionCreate", async interaction => {
         await interaction.reply("polo");
     }
 
-    if (commandName === "suggest") {
-        await runBrain(interaction, SendMessage);
+    if (commandName === "quotes") {
+        await runBrain(interaction, SendMessage, "QuotesModel");
     }
 
-    if (commandName === "curate") {
+    if (commandName === "poetry") {
+        await runBrain(interaction, SendMessage, "PoemsModel");
+    }
+
+    if (commandName === "tweet") {
         // * clear timeouts !
         if (currentReminderID !== -1) {
             clearTimeout(currentReminderID);

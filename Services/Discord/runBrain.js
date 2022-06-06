@@ -7,7 +7,7 @@ const { CleanText, ReadBrainThoughts } = require('../Processor/brainparser');
 const { MakeItRhyme, MakeItRhyme2 } = require('../Processor/datamuse');
 
 // * take the interaction, and a function to send messages
-async function runBrain(interaction, sendMessageFct) {
+async function runBrain(interaction, sendMessageFct, modelName) {
     // * message maybe contains the prompt, or model path ?
 
     // * acknowledge the message, "Running brain, will ping you when ready"
@@ -26,8 +26,8 @@ async function runBrain(interaction, sendMessageFct) {
     console.log("prompt ", prompt);
 
     // * the start could be any of /QuotesModel
-    let modelName = "QuotesModel"; // * could also be "QuotesModel", "MovieModel", "PoemsModel";
-    let modelPath = `/${modelName}/Training-20EPOCHS/content/one_step`;
+    // let modelName = "QuotesModel"; // * could also be "QuotesModel", "MovieModel", "PoemsModel";
+    let modelPath = `/${modelName}/one_step`;
 
     // ! might need to resolve the path to brain/main.py, python resolves modelpath himself
 
@@ -56,6 +56,7 @@ async function runBrain(interaction, sendMessageFct) {
         let thoughts = ReadBrainThoughts();
 
         let suggestions = CleanText(thoughts);
+        // let suggestions = thoughts;
 
         console.log("Brain is done", suggestions);
 
