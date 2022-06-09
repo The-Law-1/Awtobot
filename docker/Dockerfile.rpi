@@ -1,0 +1,21 @@
+FROM thelaw1/rpi4-tensorflow:1.0
+
+WORKDIR /Awtobot
+
+# copy local files
+COPY [".", "/Awtobot"]
+
+RUN apt-get update -y && apt-get install nodejs npm -y
+
+RUN npm install -g n
+
+RUN apt-get install -y \
+    wget
+
+RUN n lts
+
+RUN npm install --silent
+
+RUN node -v
+
+CMD ["npm", "start"]

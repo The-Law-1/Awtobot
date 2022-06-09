@@ -35,7 +35,7 @@ async function runBrain(interaction, sendMessageFct, modelName) {
     let resolvedBrainPath = path.resolve(__dirname, pathToBrain);
     console.log("Resolved path ", resolvedBrainPath);
 
-    const brainProcess = spawn('python', [resolvedBrainPath, modelPath, prompt]);
+    const brainProcess = spawn('python3', [resolvedBrainPath, modelPath, prompt]);
 
     brainProcess.on("error", (error) => {
         console.log("Failed to run brain: ", error);
