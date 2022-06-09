@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.9-bullseye
 
 WORKDIR /Awtobot
 
@@ -11,9 +11,12 @@ RUN npm install -g n
 
 RUN n lts
 
+RUN python -c 'import sys;print("%x" % sys.maxsize, sys.maxsize > 2**32)'
+
 # install server dependencies
-RUN  pip install -r ./requirements.txt \
-    && npm install --silent
+RUN python3 -m pip install -r ./requirements.txt
+
+RUN npm install --silent
 
 
 RUN node -v

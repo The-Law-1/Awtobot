@@ -4,7 +4,7 @@ services:
   server:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile.${DOCKER_NAME}
     restart: always
     environment:
       - API_KEY=${API_KEY}
