@@ -28,7 +28,7 @@ client.on("interactionCreate", async interaction => {
 
     const { commandName } = interaction;
 
-    // ! ask Victor how he handles this (function pointers ?)
+    // ! (function pointers ?)
     if (commandName === "marco") {
         await interaction.reply("polo");
     }
