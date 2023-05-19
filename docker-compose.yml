@@ -7,8 +7,8 @@ services:
       dockerfile: docker/Dockerfile.${DOCKER_NAME}
     restart: always
     environment:
-      - API_KEY=${API_KEY}
-      - API_SECRET=${API_SECRET}
+      # - API_KEY=${API_KEY}
+      # - API_SECRET=${API_SECRET}
       - CLIENT_ID=${CLIENT_ID}
       - CLIENT_SECRET=${CLIENT_SECRET}
       - GOOGLE_CONFIG_BASE64=${GOOGLE_CONFIG_BASE64}
